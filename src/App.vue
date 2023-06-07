@@ -3,12 +3,12 @@ import { store } from "./store.js";
 import axios from 'axios'   //npm install axios
 
 import AppSearch from './components/AppSearch.vue';
-import AppMovies from './components/AppMovies.vue';
+import AppListato from './components/AppListato.vue';
 
 export default {
   components: {
     AppSearch,
-    AppMovies
+    AppListato
   },
   data() {
     return {
@@ -18,12 +18,18 @@ export default {
   methods: {
 
     getSearchWord() {
+      store.typology.forEach(element => {
+        let newAPI = `${store.apiURL}${element}?${store.apiKey}&${store.language}&query=${store.searchWord}`;
+        axios.get(newAPI).then((res) => {
+          if (store.movieArray.length === 0) {
+            store.movieArray = res.data.results
+          }
+          store.tvArray = res.data.results
+        }).catch((err) => {
+          console.log(err.message)
+        })
+      });
 
-      let newAPI = store.apiURL + `&query=${store.searchWord}`
-      axios.get(newAPI).then((res) => {
-        store.movieArray = res.data.results
-
-      })
     }
   },
   created() {
@@ -42,7 +48,7 @@ export default {
     </div>
   </header>
   <main>
-    <AppMovies />
+    <AppListato />
 
   </main>
 </template>

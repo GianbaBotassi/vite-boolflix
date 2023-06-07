@@ -1,12 +1,14 @@
 <script>
 import { store } from "../store.js";
 import SingleMovie from './SingleMovie.vue';
+import AppTv from './AppTv.vue';
 
 
 export default {
-    name: 'AppMovies',
+    name: 'AppListato',
     components: {
-        SingleMovie
+        SingleMovie,
+        AppTv
     },
     data() {
         return {
@@ -21,6 +23,12 @@ export default {
     <div class="cont">
         <div class="lista">
             <SingleMovie v-for="card in store.movieArray" :key="card.id" :details="card" />
+        </div>
+    </div>
+    <h4>TV Series</h4>
+    <div class="cont">
+        <div class="lista">
+            <AppTv v-for="card in store.tvArray" :key="card.id" :details="card" />
         </div>
     </div>
 </template>
