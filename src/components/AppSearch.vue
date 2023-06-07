@@ -1,14 +1,20 @@
 
 <script>
+import { store } from "../store.js";
+
 export default {
-    name: "AppSearch"
+    name: "AppSearch",
+    data() {
+        return {
+            store
+        }
+    }
 }
 </script>
 
 <template>
-    <div>
-        ciaodfadfafddfsoo
-    </div>
+    <input type="text" v-model="store.searchWord" @keyup.enter="$emit('sendSearchWord')">
+    <button @click="$emit('sendSearchWord')">Clicca</button>
 </template>
 
 <style lang="">
