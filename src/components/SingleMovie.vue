@@ -14,7 +14,8 @@ export default {
         <h4>{{ details.title }}</h4>
         <h4>{{ details.original_title }}</h4>
         <div class="lang">
-            <img :src="'../../flags/' + details.original_language + '.svg'" alt="">
+            <img :src="'../../flags/' + details.original_language + '.svg'" alt="Non esiste"
+                onerror="src='../../flags/wg.svg'">
         </div>
         <div>{{ details.vote_average }}</div>
     </div>

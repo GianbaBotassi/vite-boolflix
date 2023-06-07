@@ -68,7 +68,7 @@ header {
 }
 
 main {
-  padding-top: 70px;
+  padding-top: 100px;
   background-color: grey;
   height: 100vh;
 }
