@@ -7,7 +7,8 @@ export const store = reactive({
     typology: ['movie', 'tv'],
     movieArray: [],
     tvArray: [],
-    searchWord: ""
+    searchWord: "",
+    imgURL: 'https://image.tmdb.org/t/p/w300'
 
 
 })

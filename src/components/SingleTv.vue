@@ -2,7 +2,7 @@
 import { store } from "../store.js";
 
 export default {
-    name: 'SingleMovie',
+    name: 'SingleTv',
     props: {
         details: Object
     },
@@ -19,8 +19,8 @@ export default {
     <div class="card">
         <img class="card-img" :src="store.imgURL + details.poster_path" alt="">
         <div class="card-body">
-            <h4>{{ details.title }}</h4>
-            <h4>{{ details.original_title }}</h4>
+            <h4>{{ details.name }}</h4>
+            <h4>{{ details.original_name }}</h4>
             <div class="lang">
                 <img :src="'../../flags/' + details.original_language + '.svg'" alt="Non esiste"
                     onerror="src='../../flags/wg.svg'">
