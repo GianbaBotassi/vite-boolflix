@@ -9,6 +9,4 @@ export const store = reactive({
     tvArray: [],
     searchWord: "",
     imgURL: 'https://image.tmdb.org/t/p/w300'
-
-
 })

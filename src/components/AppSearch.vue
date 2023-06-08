@@ -13,7 +13,8 @@ export default {
 </script>
 
 <template>
-    <input type="text" v-model.trim="store.searchWord" @keyup.enter="$emit('sendSearchWord')" placeholder="Scrivi e trova">
+    <input type="text" v-model.trim="store.searchWord" @keyup.enter="$emit('sendSearchWord')"
+        placeholder="Film, Serie tv.. ">
 </template>
 
 <style lang="">

@@ -19,13 +19,13 @@ export default {
 </script>
 
 <template>
-    <h4>Movies</h4>
+    <h4 v-if="store.movieArray.length !== 0">Movies</h4>
     <div class="cont">
         <div class="lista">
             <SingleMovie v-for="card in store.movieArray" :key="card.id" :details="card" />
         </div>
     </div>
-    <h4>TV Series</h4>
+    <h4 v-if="store.movieArray.length !== 0">TV Series</h4>
     <div class="cont">
         <div class="lista">
             <SingleTv v-for="card in store.tvArray" :key="card.id" :details="card" />
