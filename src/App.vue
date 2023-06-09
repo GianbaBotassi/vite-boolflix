@@ -31,7 +31,7 @@ export default {
           }
           store.tvArray = res.data.results
 
-          store.flagFirstSearch = true
+          store.stateFirstSearch = true
 
         }).catch((err) => {
           console.log(err.message)
@@ -63,8 +63,8 @@ export default {
       <img src="../logo.png" alt="">
     </div>
     <!-- <div>
-                                <AppGenres @changeOption="genresCall" />
-                              </div> -->
+                                  <AppGenres @changeOption="genresCall" />
+                                </div> -->
     <div>
       <AppSearch @sendSearchWord="getSearchWord" />
     </div>

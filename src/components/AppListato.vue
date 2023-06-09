@@ -21,9 +21,9 @@ export default {
 <template>
     <!-- Sezione Movies -->
     <div id="movies">
-        <h3 v-if="store.flagFirstSearch">Movies</h3>
+        <h3 v-if="store.stateFirstSearch">Movies</h3>
         <div class="text-center">
-            <h4 v-if="!store.movieArray.length && store.flagFirstSearch">Nessun risultato trovato</h4>
+            <h4 v-if="!store.movieArray.length && store.stateFirstSearch">Nessun risultato trovato</h4>
         </div>
         <div class="cont">
             <div class="lista">
@@ -31,12 +31,14 @@ export default {
             </div>
         </div>
     </div>
+
+    <div id="bord" v-if="store.stateFirstSearch"></div>
+
     <!-- Sezione tv -->
-    <div id="bord" v-if="store.flagFirstSearch"></div>
     <div id="Tv">
-        <h3 v-if="store.flagFirstSearch">TV Series</h3>
+        <h3 v-if="store.stateFirstSearch">TV Series</h3>
         <div class="text-center">
-            <h4 v-if="!store.tvArray.length && store.flagFirstSearch">Nessun risultato trovato</h4>
+            <h4 v-if="!store.tvArray.length && store.stateFirstSearch">Nessun risultato trovato</h4>
         </div>
         <div class="cont">
             <div class="lista">
