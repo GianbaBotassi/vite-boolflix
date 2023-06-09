@@ -22,7 +22,6 @@ export default {
 
     getSearchWord() {
 
-      store.flagFirstSearch = true
 
       store.typology.forEach(element => {
         let newAPI = `${store.apiURL}${element}?${store.apiKey}&${store.language}&query=${store.searchWord}`;
@@ -31,6 +30,9 @@ export default {
             store.movieArray = res.data.results
           }
           store.tvArray = res.data.results
+
+          store.flagFirstSearch = true
+
         }).catch((err) => {
           console.log(err.message)
         })
@@ -61,8 +63,8 @@ export default {
       <img src="../logo.png" alt="">
     </div>
     <!-- <div>
-                            <AppGenres @changeOption="genresCall" />
-                          </div> -->
+                                <AppGenres @changeOption="genresCall" />
+                              </div> -->
     <div>
       <AppSearch @sendSearchWord="getSearchWord" />
     </div>
