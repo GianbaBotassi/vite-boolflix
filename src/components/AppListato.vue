@@ -19,17 +19,29 @@ export default {
 </script>
 
 <template>
-    <h4 v-if="!store.flagNoResult">Nessun risultato trovato</h4>
-    <h3 v-if="store.movieArray.length !== 0">Movies</h3>
-    <div class="cont">
-        <div class="lista">
-            <SingleMovie v-for="card in store.movieArray" :key="card.id" :details="card" />
+    <!-- Sezione Movies -->
+    <div id="movies">
+        <h3 v-if="store.flagFirstSearch">Movies</h3>
+        <div class="text-center">
+            <h4 v-if="!store.movieArray.length && store.flagFirstSearch">Nessun risultato trovato</h4>
+        </div>
+        <div class="cont">
+            <div class="lista">
+                <SingleMovie v-for="card in store.movieArray" :key="card.id" :details="card" />
+            </div>
         </div>
     </div>
-    <h3 v-if="store.tvArray.length !== 0">TV Series</h3>
-    <div class="cont">
-        <div class="lista">
-            <SingleTv v-for="card in store.tvArray" :key="card.id" :details="card" />
+    <!-- Sezione tv -->
+    <div id="bord" v-if="store.flagFirstSearch"></div>
+    <div id="Tv">
+        <h3 v-if="store.flagFirstSearch">TV Series</h3>
+        <div class="text-center">
+            <h4 v-if="!store.tvArray.length && store.flagFirstSearch">Nessun risultato trovato</h4>
+        </div>
+        <div class="cont">
+            <div class="lista">
+                <SingleTv v-for="card in store.tvArray" :key="card.id" :details="card" />
+            </div>
         </div>
     </div>
 </template>
@@ -37,15 +49,20 @@ export default {
 <style lang="scss" scoped>
 @use 'styles/general' as *;
 
-
-.lista {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-
+#bord {
+    width: 50%;
+    border-bottom: dotted 5px black;
+    margin: 30px auto 20px;
 }
 
 h3 {
-    padding: 20px;
+    padding-left: 20px;
+}
+
+.lista {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 </style>

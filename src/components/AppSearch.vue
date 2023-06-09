@@ -17,6 +17,8 @@ export default {
         placeholder="Film, Serie tv.. ">
 </template>
 
-<style lang="">
-    
+<style lang="scss" scoped>
+input {
+    width: 200px;
+}
 </style>

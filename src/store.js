@@ -7,7 +7,7 @@ export const store = reactive({
     typology: ['movie', 'tv'],
     movieArray: [],
     tvArray: [],
-    flagNoResult: true,
+    flagFirstSearch: false,
     searchWord: "",
     imgURL: 'https://image.tmdb.org/t/p/w300',
     apiGenresURL: 'https://api.themoviedb.org/3/genre/',

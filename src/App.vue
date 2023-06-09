@@ -22,6 +22,8 @@ export default {
 
     getSearchWord() {
 
+      store.flagFirstSearch = true
+
       store.typology.forEach(element => {
         let newAPI = `${store.apiURL}${element}?${store.apiKey}&${store.language}&query=${store.searchWord}`;
         axios.get(newAPI).then((res) => {
@@ -34,14 +36,6 @@ export default {
         })
 
       });
-
-      // if (!store.movieArray.length && !store.tvArray.length) {
-      //   store.flagNoResult = false
-      // }
-
-      console.log(store.flagNoResult);
-      console.log(store.movieArray.length);
-      console.log(store.tvArray.length);
     },
     // genresCall() {
     //   store.typology.forEach(element => {
@@ -67,8 +61,8 @@ export default {
       <img src="../logo.png" alt="">
     </div>
     <!-- <div>
-          <AppGenres @changeOption="genresCall" />
-        </div> -->
+                            <AppGenres @changeOption="genresCall" />
+                          </div> -->
     <div>
       <AppSearch @sendSearchWord="getSearchWord" />
     </div>
