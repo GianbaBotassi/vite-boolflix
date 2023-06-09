@@ -5,7 +5,7 @@ import AppStars from './AppStars.vue';
 
 
 export default {
-    name: 'SingleMovie',
+    name: 'SingleElement',
     components: {
         AppFlag,
         AppStars
@@ -27,10 +27,19 @@ export default {
         <img class="card-img" :src="store.imgURL + details.poster_path" :alt="details.title">
         <!-- Card con info -->
         <div class="card-body">
-            <!-- Titolo italiano -->
-            <h5>{{ details.title }}</h5>
-            <!-- Titolo originale -->
-            <h6 v-if="details.title !== details.original_title">{{ details.original_title }}</h6>
+
+            <!-- Titolo italiano movies -->
+            <h5 v-if="details.title">{{ details.title }}</h5>
+
+            <!-- Titolo italiano serie -->
+
+            <h5 v-if="details.name">{{ details.name }}</h5>
+
+            <!-- Titolo originale movies -->
+            <h6 v-if="details.title && details.title !== details.original_title">{{ details.original_title }}</h6>
+
+            <!-- Titolo originale serie -->
+            <h6 v-if="details.name && details.name !== details.original_name">{{ details.original_name }}</h6>
 
             <!-- Componente per le bandiere -->
             <AppFlag :lang="details.original_language" />

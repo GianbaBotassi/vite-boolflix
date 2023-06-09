@@ -1,14 +1,12 @@
 <script>
 import { store } from "../store.js";
-import SingleMovie from './SingleMovie.vue';
-import SingleTv from './SingleTv.vue';
+import SingleElement from './SingleElement.vue';
 
 
 export default {
     name: 'AppListato',
     components: {
-        SingleMovie,
-        SingleTv
+        SingleElement
     },
     data() {
         return {
@@ -21,13 +19,13 @@ export default {
 <template>
     <!-- Sezione Movies -->
     <div id="movies">
-        <h3 v-if="store.stateFirstSearch">Movies</h3>
+        <h3>Movies</h3>
         <div class="text-center">
-            <h4 v-if="!store.movieArray.length && store.stateFirstSearch">Nessun risultato trovato</h4>
+            <h4 v-if="!store.elementArray[0].length">Nessun risultato trovato</h4>
         </div>
         <div class="cont">
             <div class="lista">
-                <SingleMovie v-for="card in store.movieArray" :key="card.id" :details="card" />
+                <SingleElement v-for="card in store.elementArray[0]" :key="card.id" :details="card" />
             </div>
         </div>
     </div>
@@ -36,13 +34,13 @@ export default {
 
     <!-- Sezione tv -->
     <div id="Tv">
-        <h3 v-if="store.stateFirstSearch">TV Series</h3>
+        <h3>TV Series</h3>
         <div class="text-center">
-            <h4 v-if="!store.tvArray.length && store.stateFirstSearch">Nessun risultato trovato</h4>
+            <h4 v-if="!store.elementArray[1].length">Nessun risultato trovato</h4>
         </div>
         <div class="cont">
             <div class="lista">
-                <SingleTv v-for="card in store.tvArray" :key="card.id" :details="card" />
+                <SingleElement v-for="card in store.elementArray[1]" :key="card.id" :details="card" />
             </div>
         </div>
     </div>

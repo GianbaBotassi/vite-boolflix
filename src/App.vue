@@ -22,14 +22,13 @@ export default {
 
     getSearchWord() {
 
+      store.elementArray = []
 
       store.typology.forEach(element => {
         let newAPI = `${store.apiURL}${element}?${store.apiKey}&${store.language}&query=${store.searchWord}`;
         axios.get(newAPI).then((res) => {
-          if (element === 'movie') {
-            store.movieArray = res.data.results
-          }
-          store.tvArray = res.data.results
+
+          store.elementArray.push(res.data.results)
 
           store.stateFirstSearch = true
 
@@ -63,14 +62,14 @@ export default {
       <img src="../logo.png" alt="">
     </div>
     <!-- <div>
-                                  <AppGenres @changeOption="genresCall" />
-                                </div> -->
+                                                                  <AppGenres @changeOption="genresCall" />
+                                                                </div> -->
     <div>
       <AppSearch @sendSearchWord="getSearchWord" />
     </div>
   </header>
   <main>
-    <AppListato />
+    <AppListato v-if="store.stateFirstSearch" />
   </main>
 </template>
 
