@@ -10,7 +10,7 @@ export const store = reactive({
     flagFirstSearch: false,
     searchWord: "",
     imgURL: 'https://image.tmdb.org/t/p/w300',
-    apiGenresURL: 'https://api.themoviedb.org/3/genre/',
-    genresMovieArray: [],
-    genresTvArray: []
+    // apiGenresURL: 'https://api.themoviedb.org/3/genre/',
+    // genresMovieArray: [],
+    // genresTvArray: []
 })

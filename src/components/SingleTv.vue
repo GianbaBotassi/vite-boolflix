@@ -12,6 +12,8 @@ export default {
         }
     },
     computed: {
+
+        // Computed properties con parametro per mettere stelline piene e vuote
         generateStarRating() {
             return (rating) => {
                 const fullStars = Math.floor(rating);
@@ -27,6 +29,7 @@ export default {
                     stars += '<img class="ciao" src="../../stars/star-empty.png" alt="Star solid width="20" height="20"">';
                 }
 
+                // Ritorna una stringa con tutte le immagini
                 return stars;
             };
         },
