@@ -19,20 +19,18 @@ export default {
 </script>
 
 <template>
-    <h4 v-if="store.movieArray.length !== 0">Movies</h4>
+    <h4 v-if="!store.flagNoResult">Nessun risultato trovato</h4>
+    <h3 v-if="store.movieArray.length !== 0">Movies</h3>
     <div class="cont">
         <div class="lista">
             <SingleMovie v-for="card in store.movieArray" :key="card.id" :details="card" />
         </div>
     </div>
-    <h4 v-if="store.movieArray.length !== 0">TV Series</h4>
+    <h3 v-if="store.tvArray.length !== 0">TV Series</h3>
     <div class="cont">
         <div class="lista">
             <SingleTv v-for="card in store.tvArray" :key="card.id" :details="card" />
         </div>
-    </div>
-    <div>
-        <img :src="store.imgURL" alt="">
     </div>
 </template>
 
@@ -45,5 +43,9 @@ export default {
     flex-wrap: wrap;
     gap: 10px;
 
+}
+
+h3 {
+    padding: 20px;
 }
 </style>
