@@ -44,7 +44,7 @@ export default {
         <!-- Card con info -->
         <div class="card-body">
             <!-- Titolo italiano -->
-            <h4>{{ details.title }}</h4>
+            <h5>{{ details.title }}</h5>
             <!-- Titolo originale -->
             <h6 v-if="details.title !== details.original_title">{{ details.original_title }}</h6>
             <!-- Messe bandiere ottenendo dinamicamente (ex en or it) e inserendolo all'interno url immagine -->
