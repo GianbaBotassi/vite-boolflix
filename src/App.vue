@@ -1,10 +1,9 @@
 <script>
 import { store } from "./store.js";
-import axios from 'axios'   //npm install axios
+import axios from "axios"; //npm install axios
 
-
-import AppSearch from './components/AppSearch.vue';
-import AppListato from './components/AppListato.vue';
+import AppSearch from "./components/AppSearch.vue";
+import AppListato from "./components/AppListato.vue";
 // import AppGenres from './components/AppGenres.vue';
 
 export default {
@@ -15,65 +14,52 @@ export default {
   },
   data() {
     return {
-      store
-    }
+      store,
+    };
   },
   methods: {
-
     getSearchWord() {
+      store.elementArray = [];
 
-      store.elementArray = []
-
-      store.typology.forEach(element => {
+      store.typology.forEach((element) => {
         let newAPI = `${store.apiURL}${element}?${store.apiKey}&${store.language}&query=${store.searchWord}`;
-        axios.get(newAPI).then((res) => {
+        axios
+          .get(newAPI)
+          .then((res) => {
+            store.elementArray.push(res.data.results);
 
-          store.elementArray.push(res.data.results)
-
-          store.stateFirstSearch = true
-
-        }).catch((err) => {
-          console.log(err.message)
-        })
-
+            store.stateFirstSearch = true;
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
       });
     },
-    // genresCall() {
-    //   store.typology.forEach(element => {
-    //     let newGenresAPI = `${store.apiGenresURL}${element}/list?${store.apiKey}`;
-    //     axios.get(newGenresAPI).then((res) => {
-    //       if (element === 'movie') {
-    //         store.genresMovieArray = res.data
-    //       }
-    //       store.genresTvArray = res.data
-    //     }).catch((err) => {
-    //       console.log(err.message)
-    //     })
-
-    //   });
-    // }
-  }
-}
+  },
+};
 </script>
 
 <template>
   <header>
     <div>
-      <img src="../logo.png" alt="">
+      <img src="../logo.png" alt="" />
     </div>
-    <!-- <div>
-                                                                  <AppGenres @changeOption="genresCall" />
-                                                                </div> -->
     <div>
       <AppSearch @sendSearchWord="getSearchWord" />
     </div>
   </header>
   <main>
     <AppListato v-if="store.stateFirstSearch" />
+    <div id="empty-page" v-else>
+      <h2>
+        Scrivi nella barra di ricerca in alto a sinistra per trovare i tuoi
+        film/serie tv preferiti
+      </h2>
+    </div>
   </main>
 </template>
 
 <style lang="scss">
-@use 'styles/general' as *;
-@use 'styles/partials/variables' as *;
+@use "styles/general" as *;
+@use "styles/partials/variables" as *;
 </style>
